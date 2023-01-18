@@ -50,3 +50,11 @@ exp1 ? exp2 : exp3
 ## strlen()
 - strlen() accepts a pointer to an array as argument and walks through memory at run time from the address we give it looking for a NULL character and counts up how many memory locations it passed before it finds one.
 - sizeof() is a compile-time expression giving you the size of a type or a variable’s type. It doesn’t care about the value of the variable. Strlen on the other hand, gives you the length of a C-style NULL-terminated string.
+  
+
+## Points to remember
+
+- `a=5, b=10 a*=a+b` will first evaluate `a+b`, means finally `a=75`. 
+- isgraph() gives true if character is graphically representable on screen eg. a,b,1,2, ;, ', etc. (not space).
+- `unsigned int a= -3.14` will give `0` to `a`, reason: overflow.
+
