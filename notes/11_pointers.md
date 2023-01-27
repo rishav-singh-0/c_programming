@@ -39,3 +39,13 @@
 ## Function Pointer
 
 - 
+
+## const
+
+const keyword applies to whatever is immediately to its left. If there is nothing to its left, it applies to whatever is immediately to its right. 
+
+1. **const char \*ptr** : This is a pointer to a constant character. You cannot change the value pointed by ptr, but you can change the pointer itself. `const char *` is a (non-const) pointer to a const char.
+   - There is no difference between const char *p and char const *p as both are pointer to a const char and position of `*`(asterik) is also same.
+2. **char \*const ptr** : This is a constant pointer to non-constant character. You cannot change the pointer p, but can change the value pointed by ptr.
+   - Pointer always points to same address, only the value at the location is changed.
+3. **const char \* const ptr** : This is a constant pointer to constant character. You can neither change the value pointed by ptr nor the pointer ptr. `char const * const ptr` is same as `const char *const ptr`.
