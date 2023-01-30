@@ -70,4 +70,15 @@ structc_t structc_array[3];
 Assume, the base address of structc_array is 0x0000 for easy calculations. If the structc_t occupies 20 (0x14) bytes as we calculated, the second structc_t array element (indexed at 1) will be at 0x0000 + 0x0014 = 0x0014. It is the start address of index 1 element of array. The double member of this structc_t will be allocated on 0x0014 + 0x1 + 0x7 = 0x001C (decimal 28) which is not multiple of 8 and conflicting with the alignment requirements of double. As we mentioned on the top, the alignment requirement of double is 8 bytes. It will be as that of the largest member of the structure.
 
 
+## Compound Literals
 
+```
+// Compound literal (an array is created without
+// any name and address of first element is assigned
+// to p.  This is equivalent to:
+// int arr[] = {2, 4, 6};
+// int *p = arr;
+int *p = (int []){2, 4, 6};
+```
+
+- Compound literals are mainly used with structures and are particularly useful when passing structures variables to functions. We can pass a structure object without defining it
