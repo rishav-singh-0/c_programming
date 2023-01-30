@@ -27,6 +27,13 @@ struct Point p1 = {0, 1};
 struct Point p2 = { .y = 1, .x = 0 };
 ```
 
+- operations on struct
+```
+struct Point p1 = {10, 20};
+struct Point p2 = p1; // works: contents of p1 are copied to p2
+if (p1 == p2){}  // compiler error: cannot do equality check for whole structures
+```
+
 ### Limitations
 - No Data Hiding: Structure members can be accessed by any function, anywhere in the scope of the Structure
 - Functions inside Structure: C structures do not permit functions inside Structure 
@@ -46,3 +53,21 @@ union test {
 
 - Size of a union is taken according the size of largest member in union.
 - 
+
+## Structure padding
+
+```
+typedef struct structc_tag
+{
+   char        c;
+   double      d;
+   int         s;
+} structc_t;
+
+structc_t structc_array[3];
+```
+
+Assume, the base address of structc_array is 0x0000 for easy calculations. If the structc_t occupies 20 (0x14) bytes as we calculated, the second structc_t array element (indexed at 1) will be at 0x0000 + 0x0014 = 0x0014. It is the start address of index 1 element of array. The double member of this structc_t will be allocated on 0x0014 + 0x1 + 0x7 = 0x001C (decimal 28) which is not multiple of 8 and conflicting with the alignment requirements of double. As we mentioned on the top, the alignment requirement of double is 8 bytes. It will be as that of the largest member of the structure.
+
+
+
