@@ -9,6 +9,7 @@
 - Arrays are always passed as pointer to functions.
 - Like other variables, arrays can be allocated memory in any of the three segments, data, heap, and stack (See this for details). Dynamically allocated arrays are allocated memory on heap, static or global arrays are allocated memory on data segment and local arrays are allocated memory on stack segment.
 - Unlike the normal arrays, variable sized arrays cannot be initialized. 
+- Arrays are just const pointers
 
 ### Shorthand
 ``` 
