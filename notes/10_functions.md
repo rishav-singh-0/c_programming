@@ -18,8 +18,23 @@ Both actual and formal parameters refer to the same locations, so any changes ma
 ```
 void exit ( int status ); 
 ```
-- Status value returned to the parent process. Generally, a status value of 0 or EXIT_SUCCESS indicates success, and any other value or the constant EXIT_FAILURE is used to indicate an error.
-- The mystery behind exit() is that it takes only integer args in the range 0 – 255 . Out of range exit values can result in unexpected exit codes. An exit value greater than 255 returns an exit code modulo 256.
+- Jobs of `exit()`
+  - Flushes unwritten buffered data.
+  - Closes all open files.
+  - Removes temporary files.
+  - Returns an integer exit status to the operating system.
+
+- Objects with static storage duration are destroyed (C++) and functions registered with atexit are called.
+- All C streams (open with functions in `<cstdio>`) are closed (and flushed, if buffered), and all files created with tmpfile are removed. 
+- Control is returned to the host environment.
+- Status value returned to the parent process. Generally, a status value of 0
+  or EXIT_SUCCESS indicates success, and any other value or the constant
+  EXIT_FAILURE is used to indicate an error.
+- The mystery behind exit() is that it takes only integer args in the range 0 -
+  255 . Out of range exit values can result in unexpected exit codes. An exit
+  value greater than 255 returns an exit code modulo 256.
+
+- destructor is executed here
 
 ### abort()
 
@@ -28,12 +43,29 @@ void abort ( void );
 ```
 - Unlike exit() function, abort() may not close files that are open. It may also not delete temporary files and may not flush stream buffer. Also, it does not call functions registered with atexit().
 
+- destructor is **not** executed
+
 ### assert()
 
 ```
 void assert( int expression );
 ```
-- If expression evaluates to 0 (false), then the expression, sourcecode filename, and line number are sent to the standard error, and then abort() function is called. If the identifier NDEBUG (“no debug”) is defined with #define NDEBUG then the macro assert does nothing.
+- If expression evaluates to 0 (false), then the expression, sourcecode filename, and line number are sent to the standard error, and then `abort()` function is called. If the identifier `NDEBUG` ("no debug") is defined with `#define NDEBUG` then the macro assert does nothing.
+
+- destructor is **not** executed if condition(assertion) is false
+
+### `atexit()`
+
+```
+int atexit (void (*func)(void));
+```
+- The function pointed by func is automatically called without arguments when the program terminates normally.
+- If more than one atexit function has been specified by different calls to this function, they are all executed in reverse order as a stack (i.e. the last function specified is the first to be executed at exit).
+- func points to a Function that is to be called. The function shall return no value and take no arguments.
+
+### Points to remember
+
+- `exit()` inside `_Noreturn` function runs destructor but simply `_Noreturn` doesnt.
 
 ## Callbacks
 
