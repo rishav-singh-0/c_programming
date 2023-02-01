@@ -98,3 +98,5 @@ ptr = realloc(ptr, newSize);
 If `size` is zero, then call to realloc is equivalent to `free(ptr)`. And if `ptr` is NULL and size is non-zero then call to realloc is equivalent to `malloc(size)`.
 
 realloc() should only be used for dynamically allocated memory
+
+> malloc will return same address only if it doesnt find any allocated memory in its way of expanding previous memory.
