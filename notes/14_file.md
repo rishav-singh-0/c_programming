@@ -46,18 +46,58 @@ Searches file. If the file is opened successfully fopen( ) loads it into memory 
 
 
 ## More Functions for File Handling in C
-- fopen(): to create or to open a file.
-- fclose(): to close a file.
-- fgets(): to read a file.
-- fprintf(): to write blocks of data into a file.
-- fscanf(): to read blocks of data from a file.
-- getc(): to read a single character to a file.
-- putc(): to write a single character to a file.
-- fseek(): to set the position of a file pointer to a mentioned location.
-- ftell(): to return the current position of a file pointer.
-- rewind(): to set the file pointer to the beginning of a file.
-- putw(): to write an integer to a file.
-- getw(): to read an integer from a file.
+- `fopen()`: to create or to open a file.
+- `fclose()`: to close a file.
+- `fgets()`: to read a file.
+- `fprintf()`: to write blocks of data into a file.
+- `fscanf()`: to read blocks of data from a file.
+- `getc()`: to read a single character to a file.
+- `putc()`: to write a single character to a file.
+- `ftell()`: to return the current position of a file pointer.
+- `fseek()`: to set the position of a file pointer to a mentioned location.
+- `rewind()`: to set the file pointer to the beginning of a file.
+- `putw()`: to write an integer to a file.
+- `getw()`: to read an integer from a file.
+
+### fgetc() and fputc()
+
+```
+int fgetc(FILE *pointer)
+pointer: pointer to a FILE object that identifies 
+the stream on which the operation is to be performed.
+
+int fputc(int char, FILE *pointer)
+char:  character to be written. 
+This is passed as its int promotion.
+pointer: pointer to a FILE object that identifies the 
+stream where the character is to be written.
+```
+
+- fputc() is used to write a single character at a time to a given file. It
+  writes the given character at the position denoted by the file pointer and
+  then advances the file pointer.
+- fputc() function returns the character that is written in case of
+  successful write operation else in case of error EOF is returned.
+
+### fgets()
+
+```
+char *fgets(char *str, int n, FILE *stream)
+```
+
+- `str` : Pointer to an array of chars where the string read is copied.
+- `n` : Maximum number of characters to be copied into str (including the terminating null-character).
+- `*stream` : Pointer to a FILE object that identifies an input stream. stdin can be used as argument to read from the standard input.
+- `returns` : the function returns str
+- It is safe to use because it checks the array bound.
+- It keep on reading until new line character encountered or maximum limit of character array.
+
+### ftell()
+
+```
+long ftell(FILE *pointer)
+```
+ftell() in C is used to find out the position of file pointer in the file with respect to starting of the file. 
 
 ### fseek()
 ```
@@ -85,4 +125,67 @@ SEEK_CUR : It denotes file pointer’s current position.
 
 -  Except that the error indicator for the stream is also cleared
 
-## fsetpos()
+### fwrite() and fread()
+
+```
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
+ptr - This is pointer to array of elements to be written
+size -  This is the size in bytes of each element to be written
+nmemb - This is the number of elements, each one with a size of size bytes
+stream - This is the pointer to a FILE object that specifies an output stream
+
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+ptr - This is the pointer to a block of memory with a minimum size of size*nmemb bytes.
+size - This is the size in bytes of each element to be read.
+nmemb - This is the number of elements, each one with a size of size bytes.
+stream - This is the pointer to a FILE object that specifies an input stream.
+```
+
+
+
+### fgetpos() and fsetpos()
+
+```
+int fgetpos(FILE *stream, fpos_t *pos)
+
+int fsetpos(FILE *stream, const fpos_t *pos)
+// pos: This is the pointer to a fpos_t object containing a position previously obtained with fgetpos.
+```
+- This function returns zero value if successful, or else it returns a non-zero value and sets the global variable errno to a positive value, which can be interpreted with perror.
+- The fsetpos() function moves the file position indicator to the location specified by the object pointed to by position. When fsetpos() is executed ,the end-of-file indicator is reset
+
+## rename()
+
+```
+int rename (const char *old_name, const char *new_name);
+
+ret_value = rename("old_name.txt", "new_name.txt");
+```
+
+If the file is renamed successfully, zero is returned. On failure, a nonzero value is returned.
+
+## remove()
+
+```
+int remove(const char *file_name);
+```
+The remove function in C/C++ can be used to delete a file. The function returns 0 if files is deleted successfully, other returns a non-zero value.
+
+## tempfile()
+
+```
+FILE *tmpfile(void) 
+```
+- The created temporary file will automatically be deleted after the termination of program.
+- It opens file in binary update mode i.e., wb+ mode.
+- The tmpfile() function always returns a pointer after the creation of file to
+  the temporary file. If by chance temporary file can not be created, then the
+  tmpfile() function returns NULL pointer.
+
+## Points to remember
+
+- EOF means -1
+- if we read same file 2 times then the file pointers are both diffrent.
+- if assigning a file pointer to another file pointer, closing any one will automatically close other.
+- while writing to a file, the actual content is written to the file if the location of the "head"(position/index of file pointer) is changed or file is closed with fclose().
+- `argv` could be passed to main for taking arguments from console/shell
