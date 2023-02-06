@@ -29,7 +29,7 @@
 ## NULL
 
 - NULL is typically defined as `((void*)0)`
-- `sizeof(void)` will give `0`. From clause 6.2.5, “A pointer to void shall have the same representation and alignment requirements as a pointer to a character type”.
+- `sizeof(void)` will give `1`. From clause 6.2.5, “A pointer to void shall have the same representation and alignment requirements as a pointer to a character type”.
 - `sizeof(NULL)` will give `8`.
 
 ### Rules
