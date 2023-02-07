@@ -9,7 +9,7 @@ int longestPalindrome(const char*, int, int*);
 bool isPalindrome(const char*, int iLen);
 
 int main() {
-    char string[ARRAY_SIZE] = "cbbd";
+    char string[ARRAY_SIZE] = "pbabbcab";
     int startIdx = 0;
     int palinLen = longestPalindrome(string, strlen(string), &startIdx);
     
@@ -40,25 +40,32 @@ int longestPalindrome(const char * iStringPtr, int iLen, int * ioStartIdx) {
     
     int indexIter = 0;
     int len = 0, startIdx = 0, palinLen=1;
-    bool isPalin = false;
+    bool isPalin = false, moveForward1=true, moveForward2=true;
     for(indexIter=0; indexIter < iLen; indexIter++){
-        for(len=0; (indexIter-len >= 0) && (indexIter+len <= iLen); len++){
+        moveForward1=true, moveForward2=true;
+        for(len=0; (moveForward1|moveForward2) && (indexIter-len >= 0) && (indexIter+len <= iLen); len++){
             startIdx = indexIter - len;
             // printf("%d\n", len);
             
-            if(startIdx>=0 && len > 0){
+            if(moveForward1 && startIdx>=0 && len > 0){
                 isPalin = isPalindrome((iStringPtr + startIdx), 2*len);
                 // printf("Even: %d : %.*s\n",isPalin, 2*len, (iStringPtr + startIdx));
                 if(isPalin){
                     palinLen = 2*len;
                 }
+                else{
+                    moveForward1 = false;
+                }
             }
 
-            if(indexIter + len < iLen){
+            if(moveForward2 && indexIter + len < iLen){
                 isPalin = isPalindrome((iStringPtr + startIdx), 2*len+1);
                 // printf("Odd : %d : %.*s\n", isPalin, 2*len+1, (iStringPtr + startIdx));
                 if(isPalin){
                     palinLen = 2*len+1;
+                }
+                else{
+                    moveForward2 = false;
                 }
             }
             
