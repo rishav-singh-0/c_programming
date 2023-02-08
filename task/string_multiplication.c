@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 enum STATUS {SUCCESS, ERROR};
-#define STR_LEN 10
+#define STR_LEN 50
 #define CAST(ch) (ch - '0')
+#define CHAR_MULT(x, y) (CAST(x) * CAST(y))
 
 int stringMultiply(const char*, const char*, char*, const int);
-int stringAddition(const char*, const char*, char*);
 
 int main() {
-    char num1[STR_LEN] = "15"; 
-    char num2[STR_LEN] = "12";
+    char num1[STR_LEN] = "999911824697812640146798924698249199999"; 
+    char num2[STR_LEN] = "9999999124609184241924678926481240999";
     char result[2*STR_LEN];
     
     int returnStatus = stringMultiply(num1, num2, result, STR_LEN);
@@ -34,33 +35,34 @@ int stringMultiply(const char* iNum1, const char* iNum2, char * ioResult, const 
         return ERROR;
     }
 
-    int lenNum1 = strlen(iNum1)-1;
-    int lenNum2 = strlen(iNum2)-1;
+    const int lenNum1 = strlen(iNum1)-1;
+    const int lenNum2 = strlen(iNum2)-1;
 
-    unsigned long int mulStage0 = 0, mulStage1 = 0, powS0, powS1=1;
     int indexNum1, indexNum2;
     // printf("%d\t%d", lenNum1, lenNum2);
+    int sum = 0, carry = 0, charMul = 0, prev = 0;
+    memset(ioResult, '0', lenNum1+lenNum2+2);
     
     for(indexNum2=lenNum2; indexNum2>=0; indexNum2--){
         
-        mulStage0 = 0;
-        powS0 = 1;
+        carry = 0;
         for(indexNum1=lenNum1; indexNum1>=0; indexNum1--){
-            mulStage0 += powS0 * CAST(iNum1[indexNum1]) * CAST(iNum2[indexNum2]);
-            powS0 *= 10;
-            // printf("%lu, %d, %d\n", powS0, CAST(iNum1[indexNum1]), CAST(iNum2[indexNum2]));
+            prev = CAST(ioResult[indexNum1+indexNum2+1]);
+            charMul = CHAR_MULT(iNum1[indexNum1], iNum2[indexNum2]);
+            sum = carry + charMul + prev;
+            carry = sum/10;
+            sum -= carry*10;
+            
+            // printf("carry: %d\tsum: %d\tcharMul: %d\tprev: %d\n", carry, sum, charMul, prev);
+            ioResult[indexNum1+indexNum2+1] = (sum) + '0';
         }
-        // printf("%lu\n", mulStage0);
-        mulStage1 += powS1 * mulStage0;
-        powS1 *= 10;
+        ioResult[indexNum1+indexNum2+1] = (carry) + '0';
+        // printf("\n");
     }
-    // printf("%lu\n", mulStage1);
     
-    sprintf(ioResult, "%lu", mulStage1);
+    // NULL termination of ioResult string
+    ioResult[lenNum1+lenNum2+2] = '\0';
+    
     return SUCCESS;
     
-}
-
-int stringAddition(const char* iNum1, const char* iNum2, char* ioResult){
-    return 0;
 }
