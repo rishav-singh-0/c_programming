@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "random_str_gen.c"
+
 #define ARRAY_SIZE 100
 typedef enum BOOLEAN{false, true} bool;
 
@@ -9,7 +11,10 @@ int longestPalindrome(const char*, int, int*);
 bool isPalindrome(const char*, int iLen);
 
 int main() {
-    char string[ARRAY_SIZE] = "pbabbcab";
+    char string[ARRAY_SIZE];
+    randomStr(string, rand()%ARRAY_SIZE, 26, 'a');
+    printf("Input string: %s\n", string);
+
     int startIdx = 0;
     int palinLen = longestPalindrome(string, strlen(string), &startIdx);
     

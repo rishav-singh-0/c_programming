@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "random_str_gen.c"
+
 enum STATUS {SUCCESS, ERROR};
 #define STR_LEN 50
 #define CAST(ch) (ch - '0')
@@ -10,9 +12,15 @@ enum STATUS {SUCCESS, ERROR};
 int stringMultiply(const char*, const char*, char*, const int);
 
 int main() {
-    char num1[STR_LEN] = "999911824697812640146798924698249199999"; 
-    char num2[STR_LEN] = "9999999124609184241924678926481240999";
+    char num1[STR_LEN]; 
+    char num2[STR_LEN];
     char result[2*STR_LEN];
+
+    randomStr(num1, rand()%STR_LEN, 10, '0');
+    printf("Input Num1: %s\n", num1);
+
+    randomStr(num2, rand()%STR_LEN, 10, '0');
+    printf("Input Num2: %s\n", num2);
     
     int returnStatus = stringMultiply(num1, num2, result, STR_LEN);
     printf("Multiplication of %s and %s is %s\n", num1, num2, result);

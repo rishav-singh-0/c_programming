@@ -2,13 +2,18 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "random_str_gen.c"
+
 #define ARRAY_SIZE 100
 
 int getLongestSubstring(const char * iStrPtr, int iLen, int * ioStartIdx);
 
 int main() {
     
-    char string[ARRAY_SIZE] = "pwwkew";
+    char string[ARRAY_SIZE];
+    randomStr(string, rand()%ARRAY_SIZE, 26, 'a');
+    printf("Input string: %s\n", string);
+
     int startIdx = 0;
     int subStringLen = getLongestSubstring(string, strlen(string), &startIdx);
     
