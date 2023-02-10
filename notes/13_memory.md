@@ -100,3 +100,8 @@ If `size` is zero, then call to realloc is equivalent to `free(ptr)`. And if `pt
 realloc() should only be used for dynamically allocated memory
 
 > malloc will return same address only if it doesnt find any allocated memory in its way of expanding previous memory.
+
+
+## References
+
+- [https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap)
