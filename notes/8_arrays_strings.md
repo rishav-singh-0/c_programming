@@ -74,3 +74,14 @@ int a[][][2] = { {{1, 2}, {3, 4}},
                  };  // error
 int a[][2] = {{1,2},{3,4}}; // Works
 ```
+
+## memcpy()
+
+```
+memcpy(argument1, argument2, argument3);
+
+// argument1 :base address of the target array.
+// argument2 :base address of the source array.
+// argument3 :number of bytes to be copied.
+```
+
