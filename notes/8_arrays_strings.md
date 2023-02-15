@@ -59,6 +59,42 @@ char *str = (char *)malloc(sizeof(char)*size);
 - strlwr():	Converts string to lowercase.
 - strupr():	Converts string to uppercase.
 - strstr(s1, s2):	Find the first occurrence of s2 in s1.
+
+### strncpy
+strncpy( ) copies the first n characters from the source string to the target string
+```
+char* strncpy(const char *str2, const char *str1, int n);
+```
+Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be copied.
+
+### strncat
+strncat( ) concatenates the first n characters from the source string to the target string.
+```
+char* strncat(const char *str2, const char *str1, int n);
+```
+Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be concatenated.
+
+### strncmp
+strncmp( ) compares the first n characters of the source string to the target string.
+```
+int strncmp(const char *str2, const char *str1, int n);
+```
+Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be compared.
+
+### strchr
+strchr( ) searches for a character within a string. If not found, it returns a 0. If found, it returns the address of the first occurrence of a character within a string variable.
+```
+char* strchr(const char *str, int n);
+```
+
+### strstr
+strstr( ) searches for a string within a string. If not found, it returns a 0. If found, it returns the address of the first occurrence of a string within another string. For example, if “am” is found in “I am a boy”, then the address of “am” in “I am a boy” is returned.
+```
+char* strstr(const char *str2, const char *str1 );
+```
+Here, str2 points to the target string, and str1 points to a string that needs to be searched in the target string.
+
+
 ## `vector` in C++
 A vector in C++ is a class in STL that represents an array. The advantages of vectors over normal arrays are, 
 
