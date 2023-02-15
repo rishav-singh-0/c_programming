@@ -34,6 +34,8 @@ struct Point p2 = p1; // works: contents of p1 are copied to p2
 if (p1 == p2){}  // compiler error: cannot do equality check for whole structures
 ```
 
+- The `#pragma pack` directive modifies the current alignment rule for only the members of structures whose declarations follow the directive.
+
 ### Limitations
 - No Data Hiding: Structure members can be accessed by any function, anywhere in the scope of the Structure
 - Functions inside Structure: C structures do not permit functions inside Structure 
