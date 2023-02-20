@@ -11,7 +11,7 @@ The library becomes part of the client’s `executable` file. This leads to a wa
 
 ### Steps to create Static Library
 
-1. generate an object file for the source code
+1. Generate an object file for the source code
    
    Common practice is to create a header file(.h) which contains all the
    declarations and store it in `include` directory
@@ -49,6 +49,42 @@ The library becomes part of the client’s `executable` file. This leads to a wa
    - `-L lib`: to specify a non-standard library directory
    - `-l`: specify library name by `-lfile` in this case
      > This option should be after all the .c files needed for current translation unit.
+<details>
+<summary>Demo</summary>
+
+``` console
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) gcc -c file_1.c file_2.c 
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) ls
+include  lib  file_1.c  file_1.o  file_2.c  file_2.o  file_main.c
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) ar rcs lib/libfile.a file_1.o file_2.o 
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) file lib/libfile.a 
+lib/libfile.a: current ar archive
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) ar t lib/libfile.a
+file_1.o
+file_2.o
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) gcc file_main.c -o file_main.out
+file_main.c:1:10: fatal error: file_header.h: No such file or directory
+    1 | #include "file_header.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[rishav@rishav-MS-7D48] [1] ➜ day14_library (! master) gcc file_main.c -o file_main.out -I include 
+/usr/bin/ld: /tmp/ccWWF8Xe.o: in function `main':
+file_main.c:(.text+0x25): undefined reference to `addNum'
+collect2: error: ld returned 1 exit status
+[rishav@rishav-MS-7D48] [1] ➜ day14_library (! master) gcc file_main.c -o file_main.out -I include -L lib 
+/usr/bin/ld: /tmp/ccDwPfLA.o: in function `main':
+file_main.c:(.text+0x25): undefined reference to `addNum'
+collect2: error: ld returned 1 exit status
+[rishav@rishav-MS-7D48] [1] ➜ day14_library (! master) gcc file_main.c -lfile -o file_main.out -I include -L lib
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) gcc file_main.c -llibfile -o file_main.out -I include -L lib
+/usr/bin/ld: cannot find -llibfile: No such file or directory
+/usr/bin/ld: note to link with lib/libfile.a use -l:libfile.a or rename it to liblibfile.a
+collect2: error: ld returned 1 exit status
+[rishav@rishav-MS-7D48] [1] ➜ day14_library (! master) gcc file_main.c -lfile -o file_main.out -I include -L lib 
+[rishav@rishav-MS-7D48] ➜ day14_library (! master) ./file_main.out 
+[rishav@rishav-MS-7D48] [15] ➜ day14_library (! master)
+```
+</details>
 
 ## Dynamic Linking
 
