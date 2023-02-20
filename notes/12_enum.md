@@ -17,7 +17,7 @@ A structure is a keyword that creates user-defined data types in C/C++. A struct
 
 - Structure members cannot be initialized with declaration. Reason: when a datatype is declared, no memory is allocated for it. Memory is allocated only when variables are created.
 - Structure members can be initialized using curly braces `{}`.
-```
+``` c
 struct Point
 {
    int x, y;
@@ -28,7 +28,7 @@ struct Point p2 = { .y = 1, .x = 0 };
 ```
 
 - operations on struct
-```
+``` c
 struct Point p1 = {10, 20};
 struct Point p2 = p1; // works: contents of p1 are copied to p2
 if (p1 == p2){}  // compiler error: cannot do equality check for whole structures
@@ -47,18 +47,17 @@ if (p1 == p2){}  // compiler error: cannot do equality check for whole structure
 
 Like Structures, union is a user defined data type. In union, all members share the same memory location.
 For example in the following C program, both x and y share the same location. If we change x, we can see the changes being reflected in y.
-```
+``` c
 union test {
     int x, y;
 };
 ```
 
 - Size of a union is taken according the size of largest member in union.
-- 
 
 ## Structure padding
 
-```
+``` c
 typedef struct structc_tag
 {
    char        c;
@@ -74,7 +73,7 @@ Assume, the base address of structc_array is 0x0000 for easy calculations. If th
 
 ## Compound Literals
 
-```
+``` c
 // Compound literal (an array is created without
 // any name and address of first element is assigned
 // to p.  This is equivalent to:

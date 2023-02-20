@@ -36,20 +36,20 @@ All of these functions read a character from input and return an integer value. 
 ### getc()
 It reads a single character from a given input stream and returns the corresponding integer value (typically ASCII value of read character) on success and EOF on failure.
 
-```
+``` c
 int getc(FILE *stream); 
 ```
 
 ### getchar()
 The difference between `getc()` and `getchar()` is `getc()` can read from any input stream, but `getchar()` reads from standard input. So `getchar()` is equivalent to `getc(stdin)`.
 
-```
+``` c
 int getchar(void);
 ```
 
 ### getchar_unlocked() 
 `getchar_unlocked()` is similar to getchar() with the exception that it is not thread-safe. This function can be securely used in a multi-threaded program if and only if they are invoked when the invoking thread possesses the (FILE*) object, as is the situation after calling flockfile() or ftrylockfile().
-```
+``` c
 int getchar_unlocked(void);
 ```
 - Since it is not thread-safe, all overheads of mutual exclusion are avoided and it is faster than getchar().

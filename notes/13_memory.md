@@ -36,7 +36,7 @@ The Heap area is shared by all shared libraries and dynamically loaded modules i
 > Remember to always manually free dynamically allocated memory otherwise it leads to **Memory Leak**.
 
 Example:
-```
+``` c
 #include <stdio.h>
 
 int global_u; /* Uninitialized variable stored in bss*/
@@ -52,7 +52,7 @@ int main(void)
 
 ## malloc()
 
-```
+``` c
 ptr = (cast-type*) malloc(byte-size)
 ```
 
@@ -62,7 +62,7 @@ If space is insufficient, allocation fails and returns a NULL pointer.
 
 ## calloc()
 
-```
+``` c
 ptr = (cast-type*)calloc(n, element-size);
 // here, n is the no. of elements and element-size is the size of each element.
 ```
@@ -74,7 +74,7 @@ If space is insufficient, allocation fails and returns a NULL pointer.
 
 ## free()
 
-```
+``` c
 void free(void *ptr);
 ```
 
@@ -87,7 +87,7 @@ void free(void *ptr);
 
 ## realloc()
 
-```
+``` c
 void *realloc(void *ptr, size_t size);
 ptr = realloc(ptr, newSize);
 // where ptr is reallocated with new size 'newSize'.

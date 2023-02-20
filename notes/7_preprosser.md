@@ -61,7 +61,7 @@
 ## Case Study
 
 first_file.c
-```
+``` c
 #include<stdio.h>
 // #include "second_file.c"
 
@@ -79,7 +79,7 @@ int main(){
 ```
 
 second_file.c
-```
+``` c
 #include<stdio.h>
 
 static int var_1 = 5;
@@ -90,7 +90,7 @@ int fun1(){
 ```
 
 third_file.c
-```
+``` c
 #include<stdio.h>
 
 static int var_1 = 1;

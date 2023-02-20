@@ -82,7 +82,7 @@ if a free registration is available. If a free registration is not available,
   pointer ). The result is implementation-defined if an attempt is made to
   change a const. 
 
-```
+``` c
 int a = 5, b = 10, c = 15;
 
 const int* foo;     // pointer to constant int.

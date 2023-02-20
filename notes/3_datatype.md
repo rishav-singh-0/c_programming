@@ -30,7 +30,7 @@ size of the “int” integer type is 4 bytes and the size of the “long long�
 integer type is 8 bytes for all the above combinations of operating system,
 architecture and compiler.
 
-```
+``` c
 Output in 32 bit gcc compiler:-
 Size of int = 4
 Size of long = 4

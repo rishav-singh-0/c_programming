@@ -23,7 +23,7 @@ target:   dependencies ...
 ```
 
 ### Example:
-```
+``` make
 CC = gcc
 CFLAGS = -Wall
 DEPS = primes.h

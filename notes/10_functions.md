@@ -15,7 +15,7 @@ Both actual and formal parameters refer to the same locations, so any changes ma
 
 ## exit()
 
-```
+``` c
 void exit ( int status ); 
 ```
 - Jobs of `exit()`
@@ -38,7 +38,7 @@ void exit ( int status );
 
 ### abort()
 
-```
+``` c
 void abort ( void );
 ```
 - Unlike exit() function, abort() may not close files that are open. It may also not delete temporary files and may not flush stream buffer. Also, it does not call functions registered with atexit().
@@ -47,7 +47,7 @@ void abort ( void );
 
 ### assert()
 
-```
+``` c
 void assert( int expression );
 ```
 - If expression evaluates to 0 (false), then the expression, sourcecode filename, and line number are sent to the standard error, and then `abort()` function is called. If the identifier `NDEBUG` ("no debug") is defined with `#define NDEBUG` then the macro assert does nothing.
@@ -56,7 +56,7 @@ void assert( int expression );
 
 ### `atexit()`
 
-```
+``` c
 int atexit (void (*func)(void));
 ```
 - The function pointed by func is automatically called without arguments when the program terminates normally.
@@ -74,7 +74,7 @@ int atexit (void (*func)(void));
 
 ### Function pointer
 
-```
+``` c
 // fun_ptr is a pointer to function fun() 
 void (*fun_ptr)(int) = &fun;
 
@@ -85,7 +85,7 @@ void (*fun_ptr)(int) = &fun;
 -  Unlike normal pointers, a function pointer points to code, not data. Typically a function pointer stores the start of executable code.
 -  Unlike normal pointers, we do not allocate de-allocate memory using function pointers.
 -  A function’s name can also be used to get functions’ address. For example, in the below program, we have removed address operator `&` in assignment. We have also changed function call by removing *, the program still works.
-```
+``` c
 void (*fun_ptr)(int) = fun;  // & removed  
 fun_ptr(10);  // * removed
 ```

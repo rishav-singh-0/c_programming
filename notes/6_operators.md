@@ -22,12 +22,12 @@ It is a compile-time unary operator which can be used to compute the size of its
 
 - Expressions written in sizeof() are never executed.
 - Used to find out the number of elements in an array
-```
+``` c
 len = sizeof(arr) / sizeof(arr[0]));
 ```
 
 - To allocate a block of memory dynamically
-```
+``` c
 int* ptr = (int*)malloc(10 * sizeof(int));
 ```
 
@@ -41,7 +41,7 @@ int* ptr = (int*)malloc(10 * sizeof(int));
 In C/C++, precedence of Prefix ++ (or Prefix --) has same priority than dereference (\*) operator, and precedence of Postfix ++ (or Postfix --) is higher than both Prefix ++ and \*.  If p is a pointer then \*p++ is equivalent to \*(p++) and ++\*p is equivalent to ++(\*p) (both Prefix ++ and \* are right associative).
 
 ## Ternary Operator
-```
+``` c
 exp1 ? exp2 : exp3
 ```
 

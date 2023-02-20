@@ -61,7 +61,7 @@ Searches file. If the file is opened successfully fopen( ) loads it into memory 
 
 ### fgetc() and fputc()
 
-```
+``` c
 int fgetc(FILE *pointer)
 pointer: pointer to a FILE object that identifies 
 the stream on which the operation is to be performed.
@@ -81,7 +81,7 @@ stream where the character is to be written.
 
 ### fgets()
 
-```
+``` c
 char *fgets(char *str, int n, FILE *stream)
 ```
 
@@ -94,13 +94,13 @@ char *fgets(char *str, int n, FILE *stream)
 
 ### ftell()
 
-```
+``` c
 long ftell(FILE *pointer)
 ```
 ftell() in C is used to find out the position of file pointer in the file with respect to starting of the file. 
 
 ### fseek()
-```
+``` c
 int fseek(FILE *pointer, long int offset, int position)
 pointer: pointer to a FILE object that identifies the stream.
 offset: number of bytes to offset from position
@@ -119,7 +119,7 @@ SEEK_CUR : It denotes file pointer’s current position.
 
 - The rewind function sets the file position indicator for the stream pointed to by stream to the beginning of the file. It is equivalent to.
 
-```
+``` c
 (void)fseek(stream, 0L, SEEK_SET)
 ```
 
@@ -127,7 +127,7 @@ SEEK_CUR : It denotes file pointer’s current position.
 
 ### fwrite() and fread()
 
-```
+``` c
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
 ptr - This is pointer to array of elements to be written
 size -  This is the size in bytes of each element to be written
@@ -145,7 +145,7 @@ stream - This is the pointer to a FILE object that specifies an input stream.
 
 ### fgetpos() and fsetpos()
 
-```
+``` c
 int fgetpos(FILE *stream, fpos_t *pos)
 
 int fsetpos(FILE *stream, const fpos_t *pos)
@@ -156,7 +156,7 @@ int fsetpos(FILE *stream, const fpos_t *pos)
 
 ## rename()
 
-```
+``` c
 int rename (const char *old_name, const char *new_name);
 
 ret_value = rename("old_name.txt", "new_name.txt");
@@ -166,14 +166,14 @@ If the file is renamed successfully, zero is returned. On failure, a nonzero val
 
 ## remove()
 
-```
+``` c
 int remove(const char *file_name);
 ```
 The remove function in C/C++ can be used to delete a file. The function returns 0 if files is deleted successfully, other returns a non-zero value.
 
 ## tempfile()
 
-```
+``` c
 FILE *tmpfile(void) 
 ```
 - The created temporary file will automatically be deleted after the termination of program.

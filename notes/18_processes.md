@@ -8,7 +8,7 @@ requires `#include <unistd.h>` library
 # fork()
 fork() launches a child process. Control goes to fork() only once. Whereas, control returns from fork() twice.
 
-```
+``` c
 # include <stdio.h>
 # include <stdio.h>
  /* for prototype of fork( ) */

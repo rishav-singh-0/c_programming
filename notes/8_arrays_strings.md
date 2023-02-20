@@ -12,7 +12,7 @@
 - Arrays are just const pointers
 
 ### Shorthand
-``` 
+``` c
     int array[10] = {[0 ... 3]1, [6 ... 9]2}; 
     // will be equal to int array[10] = {1, 1, 1, 1, 0, 0, 2, 2, 2, 2};
 ```
@@ -62,34 +62,34 @@ char *str = (char *)malloc(sizeof(char)*size);
 
 ### strncpy
 strncpy( ) copies the first n characters from the source string to the target string
-```
+``` c
 char* strncpy(const char *str2, const char *str1, int n);
 ```
 Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be copied.
 
 ### strncat
 strncat( ) concatenates the first n characters from the source string to the target string.
-```
+``` c
 char* strncat(const char *str2, const char *str1, int n);
 ```
 Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be concatenated.
 
 ### strncmp
 strncmp( ) compares the first n characters of the source string to the target string.
-```
+``` c
 int strncmp(const char *str2, const char *str1, int n);
 ```
 Here, str2 points to the target string, str1 points to the source string, and n stores the number of characters in the source string that need to be compared.
 
 ### strchr
 strchr( ) searches for a character within a string. If not found, it returns a 0. If found, it returns the address of the first occurrence of a character within a string variable.
-```
+``` c
 char* strchr(const char *str, int n);
 ```
 
 ### strstr
 strstr( ) searches for a string within a string. If not found, it returns a 0. If found, it returns the address of the first occurrence of a string within another string. For example, if “am” is found in “I am a boy”, then the address of “am” in “I am a boy” is returned.
-```
+``` c
 char* strstr(const char *str2, const char *str1 );
 ```
 Here, str2 points to the target string, and str1 points to a string that needs to be searched in the target string.
@@ -104,7 +104,7 @@ A vector in C++ is a class in STL that represents an array. The advantages of ve
 ## Multidimention arrays
 
 - In C/C++, initialization of a multidimensional arrays can have left most dimension as optional. Except the left most dimension, all other dimensions must be specified. 
-```
+``` c
 int a[][][2] = { {{1, 2}, {3, 4}}, 
                    {{5, 6}, {7, 8}}
                  };  // error
@@ -113,7 +113,7 @@ int a[][2] = {{1,2},{3,4}}; // Works
 
 ## memcpy()
 
-```
+``` c
 memcpy(argument1, argument2, argument3);
 
 // argument1 :base address of the target array.
