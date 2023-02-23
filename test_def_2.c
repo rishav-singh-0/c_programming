@@ -31,7 +31,7 @@ void convertStr(const unsigned int iNum, char ioStrPtr[]){
     const char* ones[10] = {"Zero", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine "};
     const char* teens[10] = {"Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fiveteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen "};
     const char* tens[10] = {"", "Ten ", "Twenty ", "Thirty ", "Fourty ", "Fivety ", "Sixty ", "Seventy ", "Eighty ", "Ninety "};
-    const char* zeros[5] = {"", "Hundred ", "Thousand ", "Million "};
+    const char* zeros[5] = {"", "Hundred ", "Thousand ", "Million ", "Billion "};
     
     if(iNum==0){
         strcpy(ioStrPtr, ones[0]);
