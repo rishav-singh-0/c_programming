@@ -83,3 +83,19 @@ int *p = (int []){2, 4, 6};
 ```
 
 - Compound literals are mainly used with structures and are particularly useful when passing structures variables to functions. We can pass a structure object without defining it
+
+## Structure inside structure
+
+```c
+struct Point {
+   int x;
+   int y;
+   struct Theta {
+      int t;
+   } w;
+};
+
+// Initialization
+struct Point p1 = {5, 5, 90}
+// here p1.x, p1.y, p1.w.t will have values 5, 5, 90 respectively
+```

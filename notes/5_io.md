@@ -10,7 +10,7 @@ fprintf is used to print the string content in file but not on stdout console.
 
 ### snprintf
 Used to store the specified string till a specified length in the specified format.
-```
+``` c
 int snprintf(char *str, size_t size, const char *format, …);
 
 int j = snprintf(buffer, 6, "%s\n", s);

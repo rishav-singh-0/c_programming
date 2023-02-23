@@ -16,7 +16,7 @@ elsewhere and not within the same block where it is used.
   no error. Linker throws an error when it finds no such variable exists.
 - When an extern variable is initialized, then memory for this is allocated and
   it will be considered defined.
-
+<br>
 - When a function is declared or defined, the extern keyword is implicitly
   assumed since functions are visible throughout the program by default.
 - As an exception, when an extern variable is declared with initialization, it
