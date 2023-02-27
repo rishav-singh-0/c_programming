@@ -234,7 +234,7 @@ Bool createFile(char * iFileName, int iFileNameLen, FILE **oFile){
     }
     
     // opening file
-    *oFile = fopen(iFileName, "w");
+    *oFile = fopen(iFileName, "w+");
 
     if(NULL == oFile){
         fprintf(stderr, "[%s]:[%d] oFile creation failed!\n", __func__, __LINE__);
@@ -378,6 +378,10 @@ Bool addRecord(FILE* oFile){
     tRecord->vmsToneLen = vmsToneLen;
     
     saveRecord(oFile, tRecord, 0);
+    defaultRecord(tRecord);
+    saveRecord(oFile, tRecord, 1);
+    saveRecord(oFile, tRecord, 2);
+    displayRecord(oFile, tRecord, 1);
 
     free(tRecord);
     tRecord = NULL;
