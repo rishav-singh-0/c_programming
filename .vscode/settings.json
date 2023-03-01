@@ -2,6 +2,18 @@
     "files.associations": {
         "stdio.h": "c",
         "cstdio": "c",
-        "pthread.h": "c"
+        "pthread.h": "c",
+        "types.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "in.h": "c",
+        "netdb.h": "c",
+        "unistd.h": "c",
+        "socket.h": "c",
+        "fcntl.h": "c",
+        "fcntl2.h": "c",
+        "features.h": "c",
+        "errno.h": "c",
+        "errno-base.h": "c"
     }
 }
