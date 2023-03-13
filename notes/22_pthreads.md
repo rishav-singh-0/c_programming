@@ -10,7 +10,9 @@
   practice, if it is required to access global variable by multiple threads,
   then they should be accessed using a mutex.
 
-## pthread_create
+## Functions
+
+### pthread_create
 Used to create a new thread
 
 ``` c
@@ -33,7 +35,7 @@ Parameters:
 - arg: pointer to void that contains the arguments to the function defined in
   the earlier argument
 
-## pthread_exit
+### pthread_exit
 Used to terminate a thread
 
 ``` c
@@ -46,7 +48,7 @@ integer that stores the return status of the thread terminated. The scope of
 this variable must be global so that any thread waiting to join this thread may
 read the return status.
 
-## pthread_join
+### pthread_join
 Used to wait for the termination of a thread.
 
 ``` c
@@ -60,7 +62,7 @@ This method accepts following parameters:
 - thread_return: pointer to the location where the exit status of the thread
   mentioned in th is stored.
 
-## pthread_self
+### pthread_self
 Used to get the thread id of the current thread.
 
 ``` c
@@ -68,7 +70,7 @@ pthread_t pthread_self(void);
 ```
 
 
-## pthread_equal
+### pthread_equal
 Compares whether two threads are the same or not. If the two threads are equal,
 the function returns a non-zero value otherwise zero.
 
@@ -82,7 +84,7 @@ This method accepts following parameters:
 - t1: the thread id of the first thread
 - t2: the thread id of the second thread
 
-## pthread_cancel
+### pthread_cancel
 Used to send a cancellation request to a thread
 
 ``` c
@@ -93,7 +95,7 @@ Parameter:
 This method accepts a mandatory parameter thread which is the thread id of the
 thread to which cancel request is sent.
 
-## pthread_detach
+### pthread_detach
 Used to detach a thread. A detached thread does not require a thread to join on
 terminating. The resources of the thread are automatically released after
 terminating if the thread is detached.
@@ -105,3 +107,32 @@ int pthread_detach(pthread_t thread);
 Parameter:
 This method accepts a mandatory parameter thread which is the thread id of the
 thread that must be detached.
+
+## Semaphores
+
+### sem_init
+
+``` c
+int sem_init(sem_t *sem, int pshared, unsigned int value)
+```
+Initialize semaphore object SEM to VALUE. If PSHARED then share it with other processes.
+
+### sem_wait
+
+``` c
+int sem_wait(sem_t *sem)
+```
+Checks if `sem` is equal to `0` then wait for it to become non-zero
+If `sem > 0` then decrement sem ie. `sem--` and execute the block of code.
+
+### sem_post
+
+``` c
+int sem_post(sem_t *sem)
+```
+Increment `sem` by `1` ie. `sem++` and execute the block of code.
+
+## Diffrence between Binary Semaphores and Mutex
+
+Locking and unlocking mutex in diffrent threads will have undefined behaviour
+which should always be avoided. So semaphores should be used in this case.
