@@ -108,6 +108,21 @@ Parameter:
 This method accepts a mandatory parameter thread which is the thread id of the
 thread that must be detached.
 
+### pthread_tryjoin_np
+The `pthread_tryjoin_np()` function performs a nonblocking join with the thread
+thread, returning the exit status of the thread in *retval.  If thread has not
+yet terminated, then instead of blocking, as is done by `pthread_join()`, the
+call returns an error.
+
+``` c
+#define _GNU_SOURCE     // before pthread include
+
+int pthread_tryjoin_np(pthread_t thread, void **retval);
+```
+
+### pthread_cleanup_pop
+### shmget
+
 ## Semaphores
 
 ### sem_init
